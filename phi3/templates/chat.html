@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Chat with Us{% endblock %}
+
+{% block content %}
+<div class="chat-interface">
+    <div class="chat-header">
+        <div class="chat-title">Chat with Us</div>
+    </div>
+    <div class="chat-window" id="chat-window">
+        <!-- Messages will appear here dynamically -->
+    </div>
+    <div class="chat-input-area">
+        <form id="chat-form" action="" method="post">
+            {% csrf_token %}
+            <input type="text" id="chat-input" name="message" placeholder="Type a message..." autocomplete="off" required>
+            <button type="submit" id="send-button">
+                <i class="mdi mdi-send"></i>
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
