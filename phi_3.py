@@ -55,28 +55,28 @@ def generate_response(text):
 
 
 
-def get_batch_suit(source_dir,destn_dir):
-    list_dir = os.listdir(source_dir)
-    for i in list_dir:
-        df = pd.read_csv(os.path.join(source_dir, i))
-        utterances = list(df['input'])
-        intent_name = list(df['intent'])[0]
-        new_utterances = []
-        for num, j in enumerate(utterances):
-            print(num,"/",len(utterances))
-            print(j)
-            new = generate_response("suggest 10 utterances like '" + j + "' and must not deviate from the main context.")
-            new_utterances.extend(new)
-        utterances.extend(new_utterances)
-        df_new = pd.DataFrame()
-        df_new['input'] = pd.Series(utterances)
-        df_new['intent'] = df_new['input'].apply(lambda x: intent_name if pd.notnull(x) else None)
-        df_new.to_csv(os.path.join(destn_dir, i + '_new.csv'), index=False)
-        print(df_new.head())
-    return "Done"
+# def get_batch_suit(source_dir,destn_dir):
+#     list_dir = os.listdir(source_dir)
+#     for i in list_dir:
+#         df = pd.read_csv(os.path.join(source_dir, i))
+#         utterances = list(df['input'])
+#         intent_name = list(df['intent'])[0]
+#         new_utterances = []
+#         for num, j in enumerate(utterances):
+#             print(num,"/",len(utterances))
+#             print(j)
+#             new = generate_response("suggest 10 utterances like '" + j + "' and must not deviate from the main context.")
+#             new_utterances.extend(new)
+#         utterances.extend(new_utterances)
+#         df_new = pd.DataFrame()
+#         df_new['input'] = pd.Series(utterances)
+#         df_new['intent'] = df_new['input'].apply(lambda x: intent_name if pd.notnull(x) else None)
+#         df_new.to_csv(os.path.join(destn_dir, i + '_new.csv'), index=False)
+#         print(df_new.head())
+#     return "Done"
     
 
-get_batch_suit(source_dir,destn_dir)
+# get_batch_suit(source_dir,destn_dir)
 
 
 

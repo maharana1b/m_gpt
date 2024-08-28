@@ -1,0 +1,5 @@
+*.log
+*.pot
+*.pyc
+__pycache__/
+Phi-3-mini-4k-instruct
